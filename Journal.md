@@ -1,0 +1,3 @@
+What did you accomplish in this phase? Why is using "use strict"; considered a “safety net” for developers?
+I created the 1st version of this vault system using a JS function, enabled strict mode, and used an if-else statement to check for the correct key. I used return statements to send back the correct result for the input. I tested it after a lengthy battle with getting the program to run in the terminal. Node.js wasn't installed on my computer, so I had to install it. After installation, Git Bash still couldn't recognize the node command. We had to locate the Node.js installation and update Git Bash's PATH settings so it could find and run Node.
+
