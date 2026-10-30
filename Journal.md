@@ -10,3 +10,6 @@ Return simply gives back a value and allows the program to continue running but 
 
 ***Please kindly re-check my Journal Prompt 1 response for the 2nd part I missed when submitting at the end of Phase 1. Thank you.
 
+Journal Prompt 3: How does the finally block behave differently than the catch block? Describe a real-world scenario where a finally block would be critical for a program’s stability.
+
+The finally block always runs, with or without the occurence of an error. The catch block handles the errors when they happen. A real-world example would be an error ocurring during checkout in a shopping app where there's a limited quantity of an item-- the finally block would ensure that the temorary reservation is released so that it wouldn't make the inventory on-hand appear to be more limited than it actually is.

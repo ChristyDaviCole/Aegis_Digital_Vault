@@ -29,6 +29,23 @@ To create a custom error: class InvalidKeyError extends Error {}.
 Use the throw new ErrorName("message") syntax to trigger the exception.
 */
 
+/*
+Phase 3: The Safety Protocol
+Now you must implement a way to handle these crashes so the entire program doesn’t stop running.
+
+Requirements
+Create a “Master Access” function called attemptEntry(key).
+Inside this function, wrap the call to accessVault(key) in a try...catch...finally block:
+Try: Attempt to call accessVault.
+Catch: Use instanceof to check the error type. If it’s an InvalidKeyError, log "Security Alert: System corruption detected.". If it’s a VaultLockedError, log "User Error: Please try again.". If it’s any other error, re-throw it.
+Finally: Log "Vault attempt completed." regardless of whether the access succeeded or failed.
+Replace your test calls to use attemptEntry instead of accessVault directly.
+
+Hints
+The finally block is the perfect place for “cleanup” or logging that must happen every single time.
+Remember to use if (e instanceof InvalidKeyError) inside your catch block.
+*/
+
 "use strict";
 
 class InvalidKeyError extends Error {
@@ -64,8 +81,44 @@ function accessVault(key) {
 
 }
 
-console.log(accessVault("SECRET_123"));
+function attemptEntry(key) {
 
-console.log(accessVault("password"));
+    try {
 
-console.log(accessVault(""));
+        console.log(accessVault(key));
+
+    } catch (e) {
+
+        if (e instanceof InvalidKeyError) {
+
+            console.log("Security Alert: System corruption detected.");
+
+        }
+        
+        else if (e instanceof VaultLockedError) {
+
+            console.log("User Error: Please try again.");
+
+        }
+
+        else {
+
+            throw e;
+
+        }
+
+    }
+
+    finally {
+
+        console.log("Vault attempt completed.");
+
+    }
+
+}
+
+attemptEntry("SECRET_123");
+
+attemptEntry("password");
+
+attemptEntry("");
