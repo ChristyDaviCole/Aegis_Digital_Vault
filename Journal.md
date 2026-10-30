@@ -13,3 +13,7 @@ Return simply gives back a value and allows the program to continue running but 
 Journal Prompt 3: How does the finally block behave differently than the catch block? Describe a real-world scenario where a finally block would be critical for a program’s stability.
 
 The finally block always runs, with or without the occurence of an error. The catch block handles the errors when they happen. A real-world example would be an error ocurring during checkout in a shopping app where there's a limited quantity of an item-- the finally block would ensure that the temorary reservation is released so that it wouldn't make the inventory on-hand appear to be more limited than it actually is.
+
+Journal Prompt 4: Why is automated testing more reliable than manual testing when verifying that your code “crashes” correctly? What did you learn about the flow of execution when an error is thrown and caught?
+
+Automated tests are more consistent than human ones. Humans make mistakes but automated tests will check everything just as thoroughly every time. When an error is thrown, the program is interrupted so that it can jump to the catch block which handles the error so the program doesn't crash like it would if the error went unhandled.

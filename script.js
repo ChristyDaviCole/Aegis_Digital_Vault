@@ -46,6 +46,22 @@ The finally block is the perfect place for “cleanup” or logging that must ha
 Remember to use if (e instanceof InvalidKeyError) inside your catch block.
 */
 
+/*
+Phase 4: The Audit Suite
+Finally, verify that your vault crashes and recovers at the exact points you intended using automated tests.
+
+Requirements
+Create one or more test functions that automatically verify your vault’s behavior. Your tests should be able to report whether they passed or failed.
+Ensure your tests cover these three scenarios:
+A correct key returns "Access Granted".
+An undefined or NaN key causes an InvalidKeyError to be thrown.
+A wrong key causes a VaultLockedError to be thrown.
+
+Hints
+To test if a function throws a specific error, you can wrap the call in a try/catch block and return true if the caught error is an instanceof the expected error class.
+Example pattern: try { accessVault(null); return false; } catch(e) { return e instanceof InvalidKeyError; }
+*/
+
 "use strict";
 
 class InvalidKeyError extends Error {
@@ -122,3 +138,84 @@ attemptEntry("SECRET_123");
 attemptEntry("password");
 
 attemptEntry("");
+
+function testCorrectKey() {
+
+    if (accessVault("SECRET_123") === "Access Granted") {
+
+        console.log("Correct key test: PASSED");
+
+    } else {
+
+        console.log("Correct key test: FAILED");
+    }
+
+}
+
+testCorrectKey();
+
+function testInvalidKey() {
+
+    try {
+
+        accessVault(undefined);
+
+    } catch (e) {
+
+        if (e instanceof InvalidKeyError) {
+
+            console.log("Invalid key test: PASSED");
+
+        } else {
+
+            console.log("Invalid key test: FAILED");
+
+        }
+
+    }
+
+    try {
+
+        accessVault(NaN);
+
+    } catch (e) {
+
+        if (e instanceof InvalidKeyError) {
+
+            console.log("NaN test: PASSED");
+
+        } else {
+
+            console.log("NaN test: FAILED");
+
+        }
+
+    }
+
+}
+
+testInvalidKey();
+
+function testWrongKey() {
+
+    try {
+
+        accessVault("password");
+
+    } catch (e) {
+
+        if (e instanceof VaultLockedError) {
+
+            console.log("Wrong key test: PASSED");
+
+        } else {
+
+            console.log("Wrong key test: FAILED");
+
+        }
+
+    }
+
+}
+
+testWrongKey();
