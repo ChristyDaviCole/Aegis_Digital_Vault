@@ -17,3 +17,7 @@ The finally block always runs, with or without the occurence of an error. The ca
 Journal Prompt 4: Why is automated testing more reliable than manual testing when verifying that your code “crashes” correctly? What did you learn about the flow of execution when an error is thrown and caught?
 
 Automated tests are more consistent than human ones. Humans make mistakes but automated tests will check everything just as thoroughly every time. When an error is thrown, the program is interrupted so that it can jump to the catch block which handles the error so the program doesn't crash like it would if the error went unhandled.
+
+Journal Prompt 5: What bugs or unexpected behaviors did you catch while testing your program? If you asked an AI tutor for feedback, what did it suggest, and did you choose to make any changes? Explain your reasoning.
+
+I did not catch any bugs per se, but I did learn that "", nums, objects, and arrays are all considered and handled as incorrect keys. The program showed the respective error message without crashing.

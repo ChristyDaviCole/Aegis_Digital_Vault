@@ -62,6 +62,19 @@ To test if a function throws a specific error, you can wrap the call in a try/ca
 Example pattern: try { accessVault(null); return false; } catch(e) { return e instanceof InvalidKeyError; }
 */
 
+/*
+Phase 5: Validation & Reflection
+The final step is to ensure your system is truly robust through manual verification and external review.
+
+Requirements
+Manual Testing: Run your program with several different inputs (including edge cases like empty strings, numbers, or null) to verify all requirements function correctly.
+AI Review (Optional / Recommended): Upload your code and this assignment document to Microsoft 365 Copilot (or another LLM) to ask for feedback on your code clarity and potential edge cases you might have missed.
+
+Hints
+When testing manually, try to “break” your system—what happens if you pass an object or an array as a key?
+If you use an AI tutor, scrutinize the suggestions: do they use simple concepts you understand, or do they introduce advanced syntax you haven’t learned yet?
+*/
+
 "use strict";
 
 class InvalidKeyError extends Error {
@@ -219,3 +232,9 @@ function testWrongKey() {
 }
 
 testWrongKey();
+
+attemptEntry("");
+attemptEntry(123);
+attemptEntry(null);
+attemptEntry({});
+attemptEntry([]);
